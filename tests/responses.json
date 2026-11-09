@@ -1,0 +1,240 @@
+{
+  "//": "Bodies from the API reference examples (api.percidian.ai/openapi.json), for the SDK tests: a job answered 202, its result, the errors the clients wait through or raise, and a batch's JSON Lines and the batch they make.",
+  "job_accepted": {
+    "id": "job_7c1e4b2a9d3f4e8b8a6c5d2e1f0a9b3c",
+    "object": "job",
+    "status": "queued",
+    "created_at": "2026-10-29T14:02:51.204Z",
+    "completed_at": null,
+    "expires_at": "2026-11-05T14:02:51.204Z",
+    "model": "percept-1",
+    "format": "json",
+    "error": null,
+    "pages": null,
+    "prompt_history": true,
+    "metadata": {
+      "source_id": "memo-0142"
+    },
+    "request_id": "req_4f2a9c1e7b3d4e6f8a0b2c4d6e8f1a3b",
+    "usage": null,
+    "links": {
+      "self": "/v1/jobs/job_7c1e4b2a9d3f4e8b8a6c5d2e1f0a9b3c",
+      "result": "/v1/jobs/job_7c1e4b2a9d3f4e8b8a6c5d2e1f0a9b3c/result"
+    }
+  },
+  "result": {
+    "id": "job_7c1e4b2a9d3f4e8b8a6c5d2e1f0a9b3c",
+    "object": "result",
+    "status": "succeeded",
+    "created_at": "2026-10-29T14:02:51.204Z",
+    "completed_at": "2026-10-29T14:03:04.518Z",
+    "model": "percept-1",
+    "error": null,
+    "graph": {
+      "nodes": [
+        {
+          "id": "n1",
+          "typed_id": "tn_am9iXzdjMWU0YjJhOWQzZjRlOGI4YTZjNWQyZTFmMGE5YjNjL24x",
+          "type": "core.person",
+          "label": "Maya Chen",
+          "name_key": "mayachen",
+          "aliases": [],
+          "properties": {},
+          "citations": [
+            {
+              "quote": "Maya Chen",
+              "start": 0,
+              "end": 9
+            }
+          ],
+          "confidence": {
+            "value": 0.97,
+            "model": "percept-1"
+          },
+          "extracted_by": "percept-1"
+        },
+        {
+          "id": "n2",
+          "typed_id": "tn_am9iXzdjMWU0YjJhOWQzZjRlOGI4YTZjNWQyZTFmMGE5YjNjL24y",
+          "type": "core.organization",
+          "label": "Northstar Labs Inc.",
+          "name_key": "northstarlabs",
+          "aliases": [],
+          "properties": {
+            "legal_name": {
+              "value": "Northstar Labs Inc.",
+              "citations": [
+                {
+                  "quote": "Northstar Labs Inc.",
+                  "start": 44,
+                  "end": 63
+                }
+              ]
+            }
+          },
+          "citations": [
+            {
+              "quote": "Northstar Labs Inc.",
+              "start": 44,
+              "end": 63
+            }
+          ],
+          "confidence": {
+            "value": 0.98,
+            "model": "percept-1"
+          },
+          "extracted_by": "percept-1"
+        },
+        {
+          "id": "n3",
+          "typed_id": "tn_am9iXzdjMWU0YjJhOWQzZjRlOGI4YTZjNWQyZTFmMGE5YjNjL24z",
+          "type": "core.place",
+          "label": "Boston",
+          "name_key": "boston",
+          "aliases": [],
+          "properties": {},
+          "citations": [
+            {
+              "quote": "Boston",
+              "start": 91,
+              "end": 97
+            }
+          ],
+          "confidence": {
+            "value": 0.95,
+            "model": "percept-1"
+          },
+          "extracted_by": "percept-1"
+        }
+      ],
+      "edges": [
+        {
+          "id": "a1",
+          "predicate": "core.affiliated_with",
+          "source": "n1",
+          "target": "n2",
+          "qualifiers": {
+            "affiliation_kind": "officer"
+          },
+          "citations": [
+            {
+              "quote": "Maya Chen is the Chief Executive Officer of Northstar Labs Inc.",
+              "start": 0,
+              "end": 63
+            }
+          ],
+          "confidence": {
+            "value": 0.94,
+            "model": "percept-1"
+          },
+          "extracted_by": "percept-1"
+        },
+        {
+          "id": "a2",
+          "predicate": "core.located_in",
+          "source": "n2",
+          "target": "n3",
+          "citations": [
+            {
+              "quote": "Northstar Labs Inc., which is headquartered in Boston",
+              "start": 44,
+              "end": 97
+            }
+          ],
+          "confidence": {
+            "value": 0.91,
+            "model": "percept-1"
+          },
+          "extracted_by": "percept-1"
+        }
+      ]
+    },
+    "unresolved": [
+      {
+        "candidate_id": "n1",
+        "kind": "property",
+        "reason": "invalid_property",
+        "status": "ontology_gap",
+        "field": "job_title"
+      }
+    ],
+    "usage": {
+      "input_tokens": 1412,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "output_tokens": 388,
+      "total_tokens": 1800,
+      "reasoning_tokens": 1180
+    },
+    "metadata": {
+      "source_id": "memo-0142"
+    },
+    "details": {
+      "pages": 1,
+      "ontology": {
+        "pack": "core@1.2.0",
+        "revision": "ont_844a3a653144f1ddc22044349790d0932251195cdbb8501965008d768167aae8"
+      },
+      "cache": null,
+      "citation_boxes": "none"
+    }
+  },
+  "result_not_ready": {
+    "error": {
+      "code": "result_not_ready",
+      "message": "The job is still running. Retry after 5 seconds.",
+      "class": "transient",
+      "retry_after": 5,
+      "request_id": "8f2a6c1d9b3e4f70-IAD"
+    }
+  },
+  "job_failed": {
+    "error": {
+      "code": "job_failed",
+      "message": "The job failed: capacity_wait_exceeded. Sending the request again can succeed (with a new Idempotency-Key, if it had one).",
+      "class": "transient",
+      "request_id": "8f2a6c1d9b3e4f70-IAD"
+    }
+  },
+  "rate_limited": {
+    "error": {
+      "code": "rate_limited",
+      "message": "Rate limit reached: 25 jobs and matches in flight (tier 1). Retry after 30 seconds, or when one finishes.",
+      "class": "transient",
+      "retry_after": 30,
+      "limit": "in_flight",
+      "request_id": "8f2a6c1d9b3e4f70-IAD"
+    }
+  },
+  "batch_requests": "{\"custom_id\": \"memo-0142\", \"method\": \"POST\", \"url\": \"/v1/extract\", \"body\": {\"model\": \"percept-1\", \"text\": \"Maya Chen is the Chief Executive Officer of Northstar Labs Inc., which is headquartered in Boston.\"}}\n{\"custom_id\": \"memo-0143\", \"method\": \"POST\", \"url\": \"/v1/extract\", \"body\": {\"model\": \"percept-1-flash\", \"text\": \"Northstar Labs acquired Bluefin Robotics LLC in March 2026.\", \"metadata\": {\"source_id\": \"memo-0143\"}}}\n",
+  "batch_accepted": {
+    "id": "batch_4f2b9c6e1a8d4b3f9e7c2a5d8b1f6e03",
+    "object": "batch",
+    "endpoint": "/v1/extract",
+    "status": "in_progress",
+    "created_at": "2026-10-29T15:00:02.118Z",
+    "expires_at": "2026-10-30T15:00:02.118Z",
+    "completed_at": null,
+    "results_expire_at": null,
+    "requests": 2,
+    "counts": {
+      "pending": 2,
+      "running": 0,
+      "succeeded": 0,
+      "failed": 0,
+      "expired": 0,
+      "canceled": 0
+    },
+    "usage": {
+      "input_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0
+    },
+    "links": {
+      "self": "/v1/batches/batch_4f2b9c6e1a8d4b3f9e7c2a5d8b1f6e03",
+      "results": "/v1/batches/batch_4f2b9c6e1a8d4b3f9e7c2a5d8b1f6e03/results"
+    }
+  }
+}
