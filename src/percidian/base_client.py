@@ -373,7 +373,7 @@ class BasePercidian:
 
         **Idempotency.** With `Idempotency-Key`, the same key and the same request within 25 hours answer 200 with the first answer, its body and `usage` (`Idempotent-Replayed: true`), without a model call, a slot or a second bill. The same key with another request is 409 `idempotency_key_reused`; while the first request with the key still runs, 409 `idempotency_key_in_use`. A match that is not answered (any error) gives its key back. Without a key, a retried match runs and bills again.
 
-        **Limits.** A match counts one request a minute and holds one slot of work in flight while it runs (429 `rate_limited`, 402 `insufficient_credit`). While Percept's capacity is short, or the model is still busy after Percept's own retries, it is 503 `overloaded`, and 503 `model_unavailable` when the model did not answer; both carry `Retry-After`. Its `usage.input_tokens` count against the tokens a minute when it is answered. A replayed key passes no limit and takes no slot.
+        **Limits.** A match counts one request a minute and holds one slot of work in flight while it runs (429 `rate_limited`, 402 `insufficient_credit`). While Percept's capacity is short, or the model is still busy, it is 503 `overloaded`, and 503 `model_unavailable` when the model did not answer; both carry `Retry-After`. Its `usage.input_tokens` count against the tokens a minute when it is answered. A replayed key passes no limit and takes no slot.
 
         **Billing and data.** A match is billed on `usage.input_tokens` only, at the match input price; its output is free. Percept keeps none of its content beyond its usage, except its answer for 25 hours when the request sends an `Idempotency-Key`.
 
@@ -865,7 +865,7 @@ class AsyncBasePercidian:
 
         **Idempotency.** With `Idempotency-Key`, the same key and the same request within 25 hours answer 200 with the first answer, its body and `usage` (`Idempotent-Replayed: true`), without a model call, a slot or a second bill. The same key with another request is 409 `idempotency_key_reused`; while the first request with the key still runs, 409 `idempotency_key_in_use`. A match that is not answered (any error) gives its key back. Without a key, a retried match runs and bills again.
 
-        **Limits.** A match counts one request a minute and holds one slot of work in flight while it runs (429 `rate_limited`, 402 `insufficient_credit`). While Percept's capacity is short, or the model is still busy after Percept's own retries, it is 503 `overloaded`, and 503 `model_unavailable` when the model did not answer; both carry `Retry-After`. Its `usage.input_tokens` count against the tokens a minute when it is answered. A replayed key passes no limit and takes no slot.
+        **Limits.** A match counts one request a minute and holds one slot of work in flight while it runs (429 `rate_limited`, 402 `insufficient_credit`). While Percept's capacity is short, or the model is still busy, it is 503 `overloaded`, and 503 `model_unavailable` when the model did not answer; both carry `Retry-After`. Its `usage.input_tokens` count against the tokens a minute when it is answered. A replayed key passes no limit and takes no slot.
 
         **Billing and data.** A match is billed on `usage.input_tokens` only, at the match input price; its output is free. Percept keeps none of its content beyond its usage, except its answer for 25 hours when the request sends an `Idempotency-Key`.
 

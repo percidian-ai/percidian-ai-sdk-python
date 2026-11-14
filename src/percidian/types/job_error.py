@@ -16,7 +16,7 @@ class JobError(UniversalBaseModel):
 
     code: str = pydantic.Field()
     """
-    Why it failed. Other codes name the cause, such as `source_text_empty` (the text has nothing to extract) or `capacity_wait_exceeded` (the job waited too long for capacity). `model_overloaded`: the model stayed unavailable after Percept's own retries; send the request again after a short wait. `model_unavailable`: the model could not run the job. `document_too_long_temporary` (`deterministic`): the document is past the model's current length limit; Percept does not try it again, but sending it again later, or split, can succeed. `internal_error`: a fault on Percept's side. `job_interrupted`: the job stopped before it finished, on Percept's side; nothing was charged, so send it again. New codes can be added: act on `class`, and keep the code for diagnosis.
+    Why it failed. Other codes name the cause, such as `source_text_empty` (the text has nothing to extract) or `capacity_wait_exceeded` (the job waited too long for capacity). `model_overloaded`: the model stayed unavailable; send the request again after a short wait. `model_unavailable`: the model could not run the job. `document_too_long_temporary` (`deterministic`): the document is past the model's current length limit; Percept does not try it again, but sending it again later, or split, can succeed. `internal_error`: a fault on Percept's side. `job_interrupted`: the job stopped before it finished, on Percept's side; nothing was charged, so send it again. New codes can be added: act on `class`, and keep the code for diagnosis.
     """
 
     class_: typing_extensions.Annotated[FailureClass, FieldMetadata(alias="class"), pydantic.Field(alias="class")]

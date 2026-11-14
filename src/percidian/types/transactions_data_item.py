@@ -22,7 +22,7 @@ class TransactionsDataItem(UniversalBaseModel):
 
     type: TransactionsDataItemType = pydantic.Field()
     """
-    `grant`: credit bought. `usage`: work billed. `refund`: credit returned. `adjust`: a correction. `credit_grant`: credit Percidian granted you, which is not lifetime prepaid credit and can expire. `credit_expiry`: what was left of a granted credit when it expired.
+    `grant`: credit bought. `usage`: work billed. `refund`: credit returned. `adjust`: a correction. `credit_grant`: credit Percidian granted you, which can expire. `credit_expiry`: what was left of a granted credit when it expired.
     """
 
     amount_micro: int = pydantic.Field()

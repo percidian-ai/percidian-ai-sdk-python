@@ -1,6 +1,6 @@
 # percidian
 
-The Python client for Percept One, Percidian's extraction API: send a document's text, get back a typed knowledge graph,
+The Python client for Percept One, Percidian's extraction model: send a document's text, get back a typed knowledge graph,
 every node, property and edge cited to the text it comes from.
 
 ```sh
