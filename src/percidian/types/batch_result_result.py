@@ -27,6 +27,8 @@ class BatchResultResult_Result(UniversalBaseModel):
     created_at: dt.datetime
     completed_at: dt.datetime
     model: str
+    model_requested: str
+    model_served: str
     error: typing.Any
     usage: Usage
     graph: ResultGraph

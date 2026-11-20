@@ -142,7 +142,7 @@ class RawBatchesClient:
         - `endpoint`, in the query, is the batch's endpoint: `/v1/extract` (the default) or `/v1/match`. Every line's `url` must be it: send extractions and matches as separate batches. A line without `method` and `url` is a `/v1/extract` line.
         - `custom_id` is your name for the request: 1 to 64 letters, digits, `_` or `-`, once per batch. Match results to requests by it, not by their order.
         - `body` is what the endpoint takes: an `ExtractText` body without `webhook_url` (the batch's is in the query), or a `MatchRequest`.
-        - At most 10,000 lines and 256 MiB, and a line at most twice the text limit plus 64 KiB.
+        - At most 10,000 lines and 256 MiB, and a line at most twice the text limit plus 64 KiB. A batch with many different ontologies or a prolonged upload may reach its intake limit below these size and request-count limits. Creation then returns 413 `batch_too_large`; split the input into smaller batches.
 
         The whole batch is checked before anything is kept: a line `POST /v1/extract` would refuse refuses the batch with that line's status and code, its message naming the line. A match line is checked for its size and `ontology_id` here, and the rest when it runs: a body `POST /v1/match` would refuse fails its request (`match_invalid`).
 
@@ -627,7 +627,7 @@ class AsyncRawBatchesClient:
         - `endpoint`, in the query, is the batch's endpoint: `/v1/extract` (the default) or `/v1/match`. Every line's `url` must be it: send extractions and matches as separate batches. A line without `method` and `url` is a `/v1/extract` line.
         - `custom_id` is your name for the request: 1 to 64 letters, digits, `_` or `-`, once per batch. Match results to requests by it, not by their order.
         - `body` is what the endpoint takes: an `ExtractText` body without `webhook_url` (the batch's is in the query), or a `MatchRequest`.
-        - At most 10,000 lines and 256 MiB, and a line at most twice the text limit plus 64 KiB.
+        - At most 10,000 lines and 256 MiB, and a line at most twice the text limit plus 64 KiB. A batch with many different ontologies or a prolonged upload may reach its intake limit below these size and request-count limits. Creation then returns 413 `batch_too_large`; split the input into smaller batches.
 
         The whole batch is checked before anything is kept: a line `POST /v1/extract` would refuse refuses the batch with that line's status and code, its message naming the line. A match line is checked for its size and `ontology_id` here, and the rest when it runs: a body `POST /v1/match` would refuse fails its request (`match_invalid`).
 

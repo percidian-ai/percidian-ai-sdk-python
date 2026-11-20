@@ -32,7 +32,7 @@ class EndpointEvent(UniversalBaseModel):
 
     data: typing.Dict[str, typing.Any] = pydantic.Field()
     """
-    A job's `id`, `object` (`job`), `status`, `created_at`, `completed_at`, `model`, `error` (`code` and `class`, or null), your `metadata` and `links` (`self`, and `result` when it succeeded); a batch's `id`, `object` (`batch`), `endpoint`, `status`, `created_at`, `completed_at`, `requests`, `counts` and `links`; a test's `object` (`webhook_test`) and `endpoint_id`.
+    A job's `id`, `object` (`job`), `status`, `created_at`, `completed_at`, `model`, `model_requested`, `model_served`, `error` (`code` and `class`, or null), your `metadata` and `links` (`self`, and `result` when it succeeded); a batch's `id`, `object` (`batch`), `endpoint`, `status`, `created_at`, `completed_at`, `requests`, `counts` and `links`; a test's `object` (`webhook_test`) and `endpoint_id`.
     """
 
     if IS_PYDANTIC_V2:

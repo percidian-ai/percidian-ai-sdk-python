@@ -43,6 +43,16 @@ class FieldsResult(UniversalBaseModel):
     `percept-fill-1`.
     """
 
+    model_requested: str = pydantic.Field()
+    """
+    `percept-fill-1`.
+    """
+
+    model_served: str = pydantic.Field()
+    """
+    `percept-fill-1`.
+    """
+
     error: typing.Any
     usage: Usage = pydantic.Field()
     """

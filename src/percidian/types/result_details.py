@@ -7,6 +7,7 @@ from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from .result_details_cache import ResultDetailsCache
 from .result_details_citation_boxes import ResultDetailsCitationBoxes
 from .result_details_ontology import ResultDetailsOntology
+from .result_details_warnings_item import ResultDetailsWarningsItem
 
 
 class ResultDetails(UniversalBaseModel):
@@ -32,6 +33,11 @@ class ResultDetails(UniversalBaseModel):
     citation_boxes: ResultDetailsCitationBoxes = pydantic.Field()
     """
     `ocr_block`: boxes are the blocks sent with the pages that a quote overlaps. `partial`: only some pages have blocks; quotes on the others are cited by page, with no box. `none`: no page has blocks (`text`, or `pages` of text alone), so there are no boxes.
+    """
+
+    warnings: typing.Optional[typing.List[ResultDetailsWarningsItem]] = pydantic.Field(default=None)
+    """
+    What the job did otherwise than its request asked, when anything did: `model_switched` when `model_served` is not the model named.
     """
 
     if IS_PYDANTIC_V2:

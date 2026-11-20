@@ -46,6 +46,16 @@ class Job(UniversalBaseModel):
     The model the request named. A fill job's is `percept-fill-1`.
     """
 
+    model_requested: str = pydantic.Field()
+    """
+    The model the request named, as `model`.
+    """
+
+    model_served: str = pydantic.Field()
+    """
+    The model that ran the job: the one named, or another Percept One model when that one stayed unavailable (`details.warnings` then has `model_switched`). The job is billed at the lower of the two prices.
+    """
+
     format: JobFormat = pydantic.Field()
     """
     The shape of the job's result, as its request chose it (`json` when it chose none): its result comes in this shape only.

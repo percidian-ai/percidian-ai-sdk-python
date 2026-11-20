@@ -140,6 +140,7 @@ if typing.TYPE_CHECKING:
     from .result_details_cache import ResultDetailsCache
     from .result_details_citation_boxes import ResultDetailsCitationBoxes
     from .result_details_ontology import ResultDetailsOntology
+    from .result_details_warnings_item import ResultDetailsWarningsItem
     from .result_format import ResultFormat
     from .result_graph import ResultGraph
     from .result_object import ResultObject
@@ -334,6 +335,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ResultDetailsCache": ".result_details_cache",
     "ResultDetailsCitationBoxes": ".result_details_citation_boxes",
     "ResultDetailsOntology": ".result_details_ontology",
+    "ResultDetailsWarningsItem": ".result_details_warnings_item",
     "ResultFormat": ".result_format",
     "ResultGraph": ".result_graph",
     "ResultObject": ".result_object",
@@ -552,6 +554,7 @@ __all__ = [
     "ResultDetailsCache",
     "ResultDetailsCitationBoxes",
     "ResultDetailsOntology",
+    "ResultDetailsWarningsItem",
     "ResultFormat",
     "ResultGraph",
     "ResultObject",
